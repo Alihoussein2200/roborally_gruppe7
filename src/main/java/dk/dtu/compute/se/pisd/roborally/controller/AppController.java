@@ -76,6 +76,7 @@ public class AppController implements Observer {
      * players and create the chosen amount of players along with other elements
      * required for the game to start such as a board and the GUI.
      *
+     * @author All
      */
     public void newGame() {
         File boardFolder = new File("src/main/resources/boards");
@@ -156,6 +157,8 @@ public class AppController implements Observer {
      * It prompts the user to enter a name for the save file,
      * checks if a game with the same ID already exists, and
      * either updates the existing record or creates a new one.
+     *
+     * @author All
      */
     public void saveGame() {
 
@@ -193,6 +196,8 @@ public class AppController implements Observer {
      * Loads a saved game from the database if no current game is active.
      * It prompts the user to choose a game from a list of saved games,
      * loads the selected game's state, and initializes the game environment accordingly.
+     *
+     * @author All
      */
     public void loadGame() {
 
@@ -309,6 +314,10 @@ public class AppController implements Observer {
         // XXX do nothing for now
     }
 
+    /**
+     * Not finished
+     *
+     */
     public boolean GameIsDone(Player player) {
         if (gameController != null) {
             Alert alert = new Alert(AlertType.CONFIRMATION);

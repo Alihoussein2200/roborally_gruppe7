@@ -35,9 +35,10 @@ public class GameController {
     }
     /**
      * Initiates the programming phase of the game, setting up the board and distributing new cards to players.
-     * Sets the game phase to PROGRAMMING, assigns the first player as the current player, and resets the step counter.
-     * If this is not the first turn of a loaded game, it deals new cards to each player. Otherwise, it simply marks
-     * the first turn as completed.
+     * Sets the game phase to PROGRAMMING, assigns the first player as the current player,
+     * and resets the step counter.
+     *
+     * @author Emil
      */
     public void startProgrammingPhase() {
         board.setPhase(Phase.PROGRAMMING);
@@ -70,6 +71,8 @@ public class GameController {
      * It first clears all program registers and then assigns new, randomly generated command cards to each card slot, making them visible.
      *
      * @param player the player to whom new cards will be dealt; this method does nothing if the player is null.
+     *
+     * @author Emil, Ali
      */
     public void DealNewCardsToPlayer(Player player) {
         if (player != null) {
@@ -157,6 +160,8 @@ public class GameController {
      * Executes the next step of the current player's program during the activation phase.
      * If the card is non-interactive, it executes directly; if interactive, it transitions the game to PLAYER_INTERACTION.
      * Continues to the next player if conditions allow, otherwise checks for logical errors with assertions.
+     *
+     * @author Abaas, Ali, Jasminder
      */
     protected void executeNextStep() {
         Player currentPlayer = board.getCurrentPlayer();
@@ -190,6 +195,8 @@ public class GameController {
      *
      * @param player
      * @param command
+     *
+     * @author Emil
      */
     private void executeCommand(@NotNull Player player, Command command) {
         if (player.board == board && command != null) {
@@ -219,6 +226,8 @@ public class GameController {
      * @param player        The player to be moved.
      * @param SpacesToMove  The number of spaces the player should move.
      * @param MoveBackwards If true, the player moves in the opposite direction of their current heading.
+     *
+     * @author Emil, Jasminder, Ali
      */
     public void movePlayer(@NotNull Player player, int SpacesToMove, boolean MoveBackwards) {
         boolean again = false;
@@ -256,6 +265,8 @@ public class GameController {
      * @param player  The player to be pushed.
      * @param heading The direction in which the player should be pushed.
      * @return Returns true if the player was successfully pushed and false if the push was obstructed by a wall.
+     *
+     * @author Abaas, Emil
      */
     public boolean pushRobot(@NotNull Player player, Heading heading) {
         Space space = player.getSpace();
@@ -281,12 +292,17 @@ public class GameController {
         return false;
     }
 
+    /**
+     * @author ALL
+     */
     public void turnRight(@NotNull Player player) {
         if (player != null && player.board == board) {
             player.setHeading(player.getHeading().next());
         }
     }
-
+    /**
+     * @author ALL
+     */
     public void turnLeft(@NotNull Player player) {
         if (player != null && player.board == board) {
             player.setHeading(player.getHeading().prev());
@@ -297,6 +313,8 @@ public class GameController {
      * Turns the player around
      *
      * @param player subject to be turned
+     *
+     * @author ALL
      */
     public void makeUTurn(@NotNull Player player) {
         if (player.board == board) {
@@ -333,6 +351,8 @@ public class GameController {
      *
      * @param currentPlayer The player who is currently taking their turn.
      * @param currentStep   The current step in the player's program.
+     *
+     * @author Ali, Emil, Abaas
      */
     public void playPrevCardAgain(@NotNull Player currentPlayer, int currentStep) {
         int prevStep = currentStep - 1;
@@ -356,6 +376,8 @@ public class GameController {
      *
      * @param player  current player
      * @param command command to be executed
+     *
+     * @author Ali, Jasminder
      */
     public void executeOptionAndContinue(@NotNull Player player, Command command) {
         executeCommand(player, command);
@@ -371,6 +393,8 @@ public class GameController {
      *
      * @param currentPlayer The player who is currently taking their turn.
      * @param currentStep   The current step in the player's program.
+     *
+     * @author Jasminder, Ali,
      */
     protected void setNextPlayerToCurrent(Player currentPlayer, int currentStep) {
         int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
@@ -394,6 +418,8 @@ public class GameController {
      * Activates the actions for each player on the board.
      * This includes executing field actions, handling special cases like conveyor belts,
      * and checking for game conditions like checkpoints, pits, and the winner.
+     *
+     * @author ALL
      */
     public void activateFieldActions() {
         for (int i = 0; i < board.getNumberOfPlayers(); i++) {
@@ -431,7 +457,9 @@ public class GameController {
     }
 
 
-
+    /**
+     * @author Emil, Jasminder
+     */
     private boolean willHitWall(Space spaceFrom, Space spaceTo, Heading direction) {
         return (spaceFrom.getWalls().contains(direction) || spaceTo.getWalls().contains(direction.next().next()));
     }
@@ -439,6 +467,8 @@ public class GameController {
     /**
      * Checks if the most recent non-"AGAIN" command card in the current player's program is a interactive card.
      * @return true if the most recent non-"AGAIN" command card is interactive, false otherwise.
+     *
+     * @author Abaas, Ali
      */
     private boolean isPreviousCardInteractive() {
         Player currentPlayer = this.board.getCurrentPlayer();
@@ -464,6 +494,8 @@ public class GameController {
      * If the player has won, the game is reset.
      *
      * @param player The player to check for winning condition.
+     *
+     * Not finished
      */
     private void checkWinner(Player player) {
         if (player.getCheckpointTokens() == board.checkpoints) {
@@ -481,6 +513,8 @@ public class GameController {
      *
      * @param space The space to check for a pit or off-map condition.
      * @return True if the player has fallen into a pit or off the map, false otherwise.
+     *
+     * Not finished
      */
     private boolean checkPit(Space space) {
         Player player = space.getPlayer(); // Get the player on the space
@@ -505,6 +539,8 @@ public class GameController {
      * @param prevSpace    The previous space.
      * @param currentSpace The current space.
      * @return true if the current space is out of the map, otherwise false.
+     *
+     * Not finished
      */
     private boolean OutOfMap(Space prevSpace, Space currentSpace) {
         // Check if the current space is adjacent to the previous space in the x or y direction
@@ -520,6 +556,8 @@ public class GameController {
      * Clears the players next programming cards.
      *
      * @param player
+     *
+     * Not finished
      */
     public void clearPlayersCards(Player player) {
         for (int i = board.getStep() + 1; i < 5; i++) {
@@ -534,6 +572,8 @@ public class GameController {
      * @param space Det nuværende felt, hvor spilleren befinder sig.
      * @param player Spilleren, hvis startfelt skal returneres, hvis det er relevant.
      * @return Startfeltet for spilleren, hvis spilleren er på et felt med lav x-koordinat, ellers genstartfeltet.
+     *
+     * NOT finished
      */
     public Space rebootOrStart(Space space, Player player){
         if(space.x < 3){
@@ -548,6 +588,8 @@ public class GameController {
      * Finder det første felt med en genstartshandling.
      *
      * @return Feltet med en genstartshandling, hvis der findes en, ellers null.
+     *
+     * NOT finished
      */
     private Space getRebootSpace() {
         for (int i = 0; i < board.width; i++) {
@@ -569,6 +611,8 @@ public class GameController {
      *
      * @param fieldAction Den første conveyorbåndaktion.
      * @param space       Feltet, hvor handlingen skal udføres.
+     *
+     * @author Emil, Abaas
      */
     private void DoubleConveyorBelt(FieldAction fieldAction, Space space) {
         ConveyorBelt conveyorBelt = (ConveyorBelt) fieldAction;

@@ -215,6 +215,8 @@ public class PlayerView extends Tab implements ViewObserver {
     /**
      * Displays interaction buttons for the player based on the current game state.
      * Clears the interaction panel and adds buttons for available command options.
+     *
+     * @author Ali, Jasminder
      */
     private void displayInteractionButtons()
     {

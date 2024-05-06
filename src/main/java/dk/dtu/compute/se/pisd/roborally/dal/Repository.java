@@ -80,7 +80,7 @@ class Repository implements IRepository {
 	/**
 	 * Creates a new game in the database by inserting all relevant information into the appropriate tables.
 	 *
-	 * @author Ekkart Kindler
+	 * @author Ekkart Kindler, ALL
 	 * @param game The game object representing the game to be created.
 	 * @return true if the game was successfully created in the database, false otherwise.
 	 */
@@ -157,7 +157,7 @@ class Repository implements IRepository {
 	 * Updates the game in the database by modifying relevant information in the appropriate tables.
 	 *
 	 *
-	 * @Author Ekkart Kindler
+	 * @Author Ekkart Kindler, ALL
 	 * @param game The game object representing the game to be updated.
 	 * @return true if the game was successfully updated in the database, false otherwise.
 	 */
@@ -203,7 +203,7 @@ class Repository implements IRepository {
 	/**
 	 * Loads the game from the database by retrieving relevant information from different tables.
 	 *
-	 * @Author Ekkart Kindler
+	 * @Author Ekkart Kindler, ALL
 	 * @param id The ID of the game to be loaded.
 	 * @return The loaded game object if successful, null otherwise.
 	 */
@@ -254,7 +254,7 @@ class Repository implements IRepository {
 
 	/**
 	 * Gets all the games saved in the database
-	 * @Author Ekkart Kindler
+	 * @Author Ekkart Kindler, ALL
 	 * @return a list of all the games
 	 */
 	@Override
@@ -311,6 +311,8 @@ class Repository implements IRepository {
 	 *
 	 * @param game The game containing players' hands to be inserted.
 	 * @throws SQLException If an SQL exception occurs.
+	 *
+	 * @author ALL
 	 */
 	private void createPlayersHandCardsInDB(Board game) throws SQLException {
 		PreparedStatement ps = getSelectCardInPlayersHandStatementU();
@@ -341,6 +343,8 @@ class Repository implements IRepository {
 	 *
 	 * @param game The game containing players' registers to be inserted.
 	 * @throws SQLException If an SQL exception occurs.
+	 *
+	 *  @author ALL
 	 */
 	private void createPlayersRegisterCardsInDB(Board game) throws SQLException {
 		PreparedStatement ps = getSelectCardInPlayersRegisterStatementU();
@@ -404,6 +408,8 @@ class Repository implements IRepository {
 	 *
 	 * @param game The game from which to load player's cards.
 	 * @throws SQLException If an SQL exception occurs.
+	 *
+	 * @author ALL
 	 */
 	private void loadCardsInPlayersHandFromDB(Board game) throws SQLException {
 		PreparedStatement ps = getSelectCardInPlayersHandStatementU();
@@ -428,6 +434,8 @@ class Repository implements IRepository {
 	 *
 	 * @param game The game from which to load player's register cards.
 	 * @throws SQLException If an SQL exception occurs.
+	 *
+	 * @author ALL
 	 */
 	private void loadCardsInPlayersRegisterFromDB(Board game) throws SQLException {
 		PreparedStatement ps = getSelectCardInPlayersRegisterStatementU();
@@ -458,6 +466,7 @@ class Repository implements IRepository {
 	 *
 	 * @param game The game containing the players whose information needs to be updated.
 	 * @throws SQLException If an SQL exception occurs.
+	 *
 	 */
 	private void updatePlayersInDB(Board game) throws SQLException {
 		PreparedStatement ps = getSelectPlayersStatementU();
@@ -480,6 +489,8 @@ class Repository implements IRepository {
 	 *
 	 * @param game The game containing the players' hands to be updated.
 	 * @throws SQLException If an SQL exception occurs.
+	 *
+	 * @author ALL
 	 */
 	private void updatePlayersHandCardsInDB(Board game) throws SQLException {
 		PreparedStatement ps = getSelectCardInPlayersHandStatementU();
@@ -508,6 +519,8 @@ class Repository implements IRepository {
 	 *
 	 * @param game The game containing the players' registers to be updated.
 	 * @throws SQLException If an SQL exception occurs.
+	 *
+	 * @author ALL
 	 */
 	private void updatePlayersRegisterCardsInDB(Board game) throws SQLException {
 		PreparedStatement ps = getSelectCardInPlayersRegisterStatementU();

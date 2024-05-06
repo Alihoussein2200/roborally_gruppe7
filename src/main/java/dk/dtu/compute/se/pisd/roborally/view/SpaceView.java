@@ -85,7 +85,7 @@ public class SpaceView extends StackPane implements ViewObserver {
      * If the player is facing SOUTH, their image is rotated 180 degrees.
      * The width and height of the player's image are adjusted to fit the space on the board.
      *
-     * @Author s230995
+     * @Author Emil s230995
      * @throws FileNotFoundException
      */
 
@@ -129,7 +129,7 @@ public class SpaceView extends StackPane implements ViewObserver {
      * Each wall is represented by an image rotated according to its direction.
      * The width and height of each image are adjusted to fit the space on the board.
      *
-     * @Author s230995
+     * @Author Emil s230995, Abaas
      * @throws FileNotFoundException if the image file for the wall is not found.
      */
 
@@ -151,7 +151,7 @@ public class SpaceView extends StackPane implements ViewObserver {
 
     /**
      * Returns the rotation angle for the wall image.
-     * @Author s230995
+     * @Author Emil s230995
      * @param wall The direction of the wall.
      * @return The rotation angle for the wall image.
      */
@@ -187,7 +187,7 @@ public class SpaceView extends StackPane implements ViewObserver {
     /**
      * Draws the board elements on the board.
      * The board elements are drawn according to the type of action on the space.
-     * @Author s230995
+     * @Author Emil, Abaas, Jasminder, Ali
      */
     public void drawBoardElements() {
         ImageView imageView = new ImageView();
@@ -224,6 +224,8 @@ public class SpaceView extends StackPane implements ViewObserver {
      * Draws the conveyor belt on the board.
      * @param conveyorBelt
      * @param imageView
+     *
+     * @Author Emil, Abaas,
      */
     private void drawConveyorBelt(ConveyorBelt conveyorBelt, ImageView imageView) {
         try {
@@ -252,6 +254,8 @@ public class SpaceView extends StackPane implements ViewObserver {
      * Draws the checkpoint on the board.
      * @param checkpoint
      * @param imageView
+     *
+     * @author Jasminder, Ali
      */
     private void drawCheckpoint(Checkpoint checkpoint, ImageView imageView) {
         try {
@@ -265,6 +269,8 @@ public class SpaceView extends StackPane implements ViewObserver {
     /**
      * Draws the start space on the board.
      * @param imageView
+     *
+     * @author Emil
      */
 
     private void drawStartSpace(ImageView imageView) {
@@ -278,6 +284,8 @@ public class SpaceView extends StackPane implements ViewObserver {
     /**
      * Draws the pit on the board.
      * @param imageView
+     *
+     * @author Abaas
      */
     private void drawPit(ImageView imageView) {
         try {
@@ -292,6 +300,8 @@ public class SpaceView extends StackPane implements ViewObserver {
      * Draws the reboot on the board.
      * @param reboot
      * @param imageView
+     *
+     * @author Jasminder
      */
     private void drawReboot(Reboot reboot, ImageView imageView) {
         try {
@@ -314,7 +324,7 @@ public class SpaceView extends StackPane implements ViewObserver {
 
     /**
      * Fits the picture to the space on the board.
-     * @Author s230995
+     * @Author Emil
      * @param imageView
      */
     private void FitPictureToSpace(ImageView imageView) {

@@ -13,4 +13,18 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
  */
 public class RebootTokens extends FieldAction {
     @Override
-    public boolean doAction(GameControl
+    public boolean doAction(GameController gameController, Space space) {
+        return false;
+    }
+    private Heading heading;
+
+    public Heading getHeading() {
+        return heading;
+    }
+
+    public void setHeading(Heading heading) {
+        this.heading = heading;
+    }
+
+
+}

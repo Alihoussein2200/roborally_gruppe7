@@ -12,4 +12,18 @@ public class Pit extends FieldAction {
      *
      * @param gameController the controller managing game logic and actions
      * @param space the game board space associated with this action
-     * @return true if a player was present and the action execut
+     * @return true if a player was present and the action executed, false otherwise
+     *
+     * NOT IMPLEMENTED FULLY
+     */
+    @Override
+    public boolean doAction(GameController gameController, Space space) {
+        Player currentPlayer = space.getPlayer();
+        if (currentPlayer != null) {
+            gameController.clearPlayersCards(currentPlayer);
+            currentPlayer.setSpace(gameController.rebootOrStart(space, currentPlayer));
+            return true;
+        }
+        return false;
+    }
+}

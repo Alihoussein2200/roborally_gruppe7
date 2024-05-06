@@ -65,17 +65,6 @@ public class ConveyorBelt extends FieldAction {
         this.heading = heading;
     }
 
-    /**
-     * Denne metode udfører ConveyorBelt-handlingen ved at flytte den nuværende spiller
-     * på transportbåndet til den næste plads. Hvis den næste plads er optaget af en
-     * anden spiller, forsøger metoden at skubbe den næste spiller.
-     *
-     * @param gameController Spilcontrolleren for det pågældende spil.
-     * @param space          Pladsen, hvor handlingen skal udføres.
-     * @return true, hvis handlingen lykkedes, ellers false.
-     */
-
-
 
      /**
       * Performs the conveyor belt action by moving the current player on the conveyor belt

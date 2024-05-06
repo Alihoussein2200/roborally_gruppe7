@@ -151,7 +151,12 @@ public class AppController implements Observer {
         }
     }
 
-
+    /**
+     * Saves the current game state to the database.
+     * It prompts the user to enter a name for the save file,
+     * checks if a game with the same ID already exists, and
+     * either updates the existing record or creates a new one.
+     */
     public void saveGame() {
 
         Boolean isSame = false;
@@ -184,7 +189,11 @@ public class AppController implements Observer {
 
     }
 
-
+    /**
+     * Loads a saved game from the database if no current game is active.
+     * It prompts the user to choose a game from a list of saved games,
+     * loads the selected game's state, and initializes the game environment accordingly.
+     */
     public void loadGame() {
 
         if (gameController == null) {

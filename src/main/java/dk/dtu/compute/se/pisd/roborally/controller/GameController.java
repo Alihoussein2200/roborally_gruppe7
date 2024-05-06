@@ -33,7 +33,12 @@ public class GameController {
         this.board = board;
         this.appController = appController;
     }
-
+    /**
+     * Initiates the programming phase of the game, setting up the board and distributing new cards to players.
+     * Sets the game phase to PROGRAMMING, assigns the first player as the current player, and resets the step counter.
+     * If this is not the first turn of a loaded game, it deals new cards to each player. Otherwise, it simply marks
+     * the first turn as completed.
+     */
     public void startProgrammingPhase() {
         board.setPhase(Phase.PROGRAMMING);
         board.setCurrentPlayer(board.getPlayer(0));
@@ -48,13 +53,24 @@ public class GameController {
         }
     }
 
-
+    /**
+     * Generates a random CommandCard from the available Command types.
+     * This method selects a random command from the Command enum and creates a new CommandCard with it.
+     *
+     * @return a new CommandCard with a randomly selected command
+     */
     private CommandCard generateRandomCommandCard() {
         Command[] commands = Command.values();
         int random = (int) (Math.random() * commands.length);
         return new CommandCard(commands[random]);
     }
 
+    /**
+     * Deals new cards to the specified player by clearing existing cards in their program fields and assigning new random cards.
+     * It first clears all program registers and then assigns new, randomly generated command cards to each card slot, making them visible.
+     *
+     * @param player the player to whom new cards will be dealt; this method does nothing if the player is null.
+     */
     public void DealNewCardsToPlayer(Player player) {
         if (player != null) {
             for (int j = 0; j < Player.NO_REGISTERS; j++) {
@@ -79,6 +95,10 @@ public class GameController {
         board.setPhase(Phase.ACTIVATION);
     }
 
+    /**
+     * Sets all program fields for every player to invisible. This is used
+     * to clear the player's view of program registers before starting a new phase.
+     */
     private void makeProgramFieldsInvisible() {
         for (int i = 0; i < board.getNumberOfPlayers(); i++) {
             Player player = board.getPlayer(i);
@@ -89,6 +109,12 @@ public class GameController {
         }
     }
 
+    /**
+     * Sets the program field specified by the register index to visible for all players.
+     * This is used to reveal the commands of a certain register during game execution.
+     *
+     * @param register the index of the register whose fields should be made visible
+     */
     private void makeProgramFieldsVisible(int register) {
         if (register >= 0 && register < Player.NO_REGISTERS) {
             for (int i = 0; i < board.getNumberOfPlayers(); i++) {
@@ -99,13 +125,17 @@ public class GameController {
         }
     }
 
+    /**
+     * Executes the programs of all players in a non-stepwise mode.
+     */
     public void executePrograms() {
         board.setStepMode(false);
         continuePrograms();
     }
 
     /**
-     * Starts round wiht stepmode set to true
+     * Executes a single step for all players
+     * Starts round with stepmode set to true
      */
     public void executeStep() {
         board.setStepMode(true);
@@ -113,7 +143,8 @@ public class GameController {
     }
 
     /**
-     * Continues the execution of the programs of all players.
+     * Continues the execution of all players' programs
+     * until all steps are executed or paused for interaction.
      */
     private void continuePrograms() {
         do {
@@ -123,7 +154,9 @@ public class GameController {
 
 
     /**
-     * Executes the next step of the programs of all players.
+     * Executes the next step of the current player's program during the activation phase.
+     * If the card is non-interactive, it executes directly; if interactive, it transitions the game to PLAYER_INTERACTION.
+     * Continues to the next player if conditions allow, otherwise checks for logical errors with assertions.
      */
     protected void executeNextStep() {
         Player currentPlayer = board.getCurrentPlayer();
@@ -153,7 +186,7 @@ public class GameController {
     }
 
     /**
-     * executes the given command for the current player.
+     * Executes a given command for a specified player on the game board.
      *
      * @param player
      * @param command
@@ -272,6 +305,15 @@ public class GameController {
         }
     }
 
+    /**
+     * Transfers a card from a source field to a target field if the target field is empty.
+     * This method checks if the source field has a card and the target field does not. If conditions are met,
+     * the card is moved to the target field, and the source field is cleared.
+     *
+     * @param source the source CommandCardField from which the card will be moved
+     * @param target the target CommandCardField to receive the card
+     * @return true if the card was successfully moved, false if the conditions were not met
+     */
     public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target) {
         CommandCard sourceCard = source.getCard();
         CommandCard targetCard = target.getCard();
@@ -484,17 +526,6 @@ public class GameController {
             player.getProgramField(i).setCard(null);
         }
     }
-
-
-
-    /**
-     * Flytter en spiller til det næste felt baseret på det aktuelle felt og dens retning.
-     *
-     * @param space Det aktuelle felt, hvor spilleren befinder sig.
-     * @param heading Retningen, som spilleren bevæger sig i.
-     */
-
-
 
 
     /**

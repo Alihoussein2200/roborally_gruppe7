@@ -58,8 +58,10 @@ public class BoardView extends VBox implements ViewObserver {
 
 
     /**
-     * The constructor for the board view
-     * @param gameController
+     * Constructs a BoardView.
+     * Initializes the view with the provided GameController.
+     *
+     * @param gameController The GameController instance managing the game.
      */
     public BoardView(@NotNull GameController gameController) {
         board = gameController.board;
@@ -90,8 +92,10 @@ public class BoardView extends VBox implements ViewObserver {
     }
 
     /**
-     * Update the board view
-     * @param subject
+     * Updates the view based on changes in the provided subject.
+     * If the subject is the observed Board, updates the displayed board layout and status message.
+     *
+     * @param subject The subject that triggered the update.
      */
     @Override
     public void updateView(Subject subject) {

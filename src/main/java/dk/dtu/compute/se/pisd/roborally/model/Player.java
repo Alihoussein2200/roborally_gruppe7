@@ -56,6 +56,13 @@ public class Player extends Subject {
     private int checkpointTokens;
 
 
+
+    /**
+     * Constructs a Player object with the provided parameters.
+     *
+     * @param name The name of the player.
+     * @param color The color associated with the player.
+     */
     public Player(@NotNull Board board, String color, @NotNull String name) {
         this.board = board;
         this.name = name;
@@ -75,36 +82,40 @@ public class Player extends Subject {
         }
     }
 
+
+
+    /**
+     * Retrieves the name of the player.
+     *
+     * @return The name of the player.
+     */
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        if (name != null && !name.equals(this.name)) {
-            this.name = name;
-            notifyChange();
-            if (space != null) {
-                space.playerChanged();
-            }
-        }
-    }
 
+    /**
+     * Retrieves the color associated with the player.
+     *
+     * @return The color of the player.
+     */
     public String getColor() {
         return color;
     }
 
-    public void setColor(String color) {
-        this.color = color;
-        notifyChange();
-        if (space != null) {
-            space.playerChanged();
-        }
-    }
 
+    /**
+     *
+     * @return The space occupied by the player.
+     */
     public Space getSpace() {
         return space;
     }
 
+    /**
+     *
+     * @param space The space to set for the player.
+     */
     public void setSpace(Space space) {
         Space oldSpace = this.space;
         if (space != oldSpace &&
@@ -126,9 +137,7 @@ public class Player extends Subject {
 
     public Space getPrevSpace(){return prevSpace;}
 
-    public void setStartSpace(Space startSpace) {
-        this.startSpace = startSpace;
-    }
+
     public Space getStartSpace(){return startSpace;}
 
     public void setActivated(Boolean activated){ this.activated = activated;}

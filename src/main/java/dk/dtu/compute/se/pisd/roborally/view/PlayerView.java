@@ -64,6 +64,12 @@ public class PlayerView extends Tab implements ViewObserver {
 
     private final GameController gameController;
 
+    /**
+     * Constructs a new PlayerView.
+     *
+     * @param gameController The GameController instance managing the game.
+     * @param player The Player instance associated with this view.
+     */
     public PlayerView(@NotNull GameController gameController, @NotNull Player player) {
         super(player.getName());
         this.setStyle("-fx-text-base-color: " + player.getColor() + ";");
@@ -135,6 +141,11 @@ public class PlayerView extends Tab implements ViewObserver {
         }
     }
 
+    /**
+     * Updates the view based on changes in the game model.
+     *
+     * @param subject The Subject object that triggered the update.
+     */
     @Override
     public void updateView(Subject subject) {
         if (subject == player.board) {
@@ -200,6 +211,11 @@ public class PlayerView extends Tab implements ViewObserver {
         }
     }
 
+
+    /**
+     * Displays interaction buttons for the player based on the current game state.
+     * Clears the interaction panel and adds buttons for available command options.
+     */
     private void displayInteractionButtons()
     {
         if (!programPane.getChildren().contains(playerInteractionPanel))

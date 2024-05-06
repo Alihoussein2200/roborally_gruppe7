@@ -38,17 +38,29 @@ public class ConveyorBelt extends FieldAction {
 
     private boolean doublecb; // Angiver om det er et dobbelt transportbånd
 
-
+     /**
+      * Gets whether it is a double conveyor belt.
+      *
+      * @return true if it is a double conveyor belt, false otherwise
+      */
     public boolean getDoublecb() {
         return doublecb;
     }
 
-
+     /**
+      * Gets the direction in which the conveyor belt points.
+      *
+      * @return the heading of the conveyor belt
+      */
     public Heading getHeading() {
         return heading;
     }
 
-
+     /**
+      * Sets the direction in which the conveyor belt points.
+      *
+      * @param heading the heading to set
+      */
     public void setHeading(Heading heading) {
         this.heading = heading;
     }
@@ -63,6 +75,17 @@ public class ConveyorBelt extends FieldAction {
      * @return true, hvis handlingen lykkedes, ellers false.
      */
 
+
+
+     /**
+      * Performs the conveyor belt action by moving the current player on the conveyor belt
+      * to the next space. If the next space is occupied by another player, the method attempts
+      * to push the next player.
+      *
+      * @param gameController the game controller for the game
+      * @param space          the space where the action is performed
+      * @return true if the action was successfully executed, false otherwise
+      */
     @Override
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
         Player currentPlayer = space.getPlayer();

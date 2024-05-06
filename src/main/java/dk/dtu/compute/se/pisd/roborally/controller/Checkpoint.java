@@ -6,6 +6,15 @@ public class Checkpoint extends FieldAction {
     private int checkpointNr;
     public int getCheckpointNr(){return checkpointNr;}
 
+
+
+    /**
+     * Performs the checkpoint action on the specified space in the game.
+     *
+     * @param gameController the game controller managing the game
+     * @param space          the space where the checkpoint action is performed
+     * @return true if the action was successfully executed, false otherwise
+     */
     @Override
     public boolean doAction(GameController gameController, Space space) {
         if(space.getPlayer() != null){

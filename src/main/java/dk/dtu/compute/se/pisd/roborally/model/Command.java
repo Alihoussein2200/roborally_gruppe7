@@ -42,18 +42,35 @@ public enum Command {
     FORWARD_3("Forward      3",4),
     U_TURN("U-turn",5),
     BACKWARD("Backward      1",6),
+    /**
+     * Command to repeat THE previous command.
+     */
     AGAIN("Again",7),
     OPTION_LEFT_RIGHT("Left OR Right",8, LEFT, RIGHT);
 
-
+    /**
+     * The display name of the command.
+     */
     final public String displayName;
+
+    /**
+     * The numerical value associated with the command.
+     */
     final public int value;
 
 
-
+    /**
+     * The list of options associated with the command.
+     */
     final private List<Command> options;
 
-
+    /**
+     * Constructs a Command with the provided display name, value, and options.
+     *
+     * @param displayName The display name of the command.
+     * @param value The numerical value associated with the command.
+     * @param options The list of options associated with the command.
+     */
     Command(String displayName, int value, Command... options) {
         this.displayName = displayName;
         this.value = value;
@@ -61,9 +78,13 @@ public enum Command {
 
     }
 
+
+
     public boolean isInteractive() {
         return !options.isEmpty();
     }
+
+
 
     public List<Command> getOptions() {
         return options;

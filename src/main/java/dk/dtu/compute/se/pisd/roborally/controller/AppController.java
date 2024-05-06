@@ -53,7 +53,6 @@ import java.io.File;
  * @author Ekkart Kindler, ekki@dtu.dk
  *
  */
-@SuppressWarnings("DuplicatedCode")
 public class AppController implements Observer {
 
     final private List<Integer> PLAYER_NUMBER_OPTIONS = Arrays.asList(2, 3, 4, 5, 6);
@@ -65,7 +64,7 @@ public class AppController implements Observer {
 
     /**
      * The constructor for AppController.
-     * 
+     *
      * @param roboRally the GUI.
      */
     public AppController(@NotNull RoboRally roboRally) {
@@ -76,7 +75,7 @@ public class AppController implements Observer {
      * Method to start a new game. Will present a dropdown menu with number of
      * players and create the chosen amount of players along with other elements
      * required for the game to start such as a board and the GUI.
-     * @author Ekkart Kindler, ekki@dtu.dk
+     *
      */
     public void newGame() {
         File boardFolder = new File("src/main/resources/boards");
@@ -109,7 +108,7 @@ public class AppController implements Observer {
             // here we just create an empty board with the required number of players.
             if (boardResult.isPresent()) {
                 ArrayList<Space> startfields = new ArrayList<>();
-                
+
 
                 try {
                     Command[] commands = Command.values();
@@ -117,19 +116,19 @@ public class AppController implements Observer {
                     gameController = new GameController(board);
                     //noinspection DuplicatedCode
                     for(int i = 0; i<board.width;i++){
-                            for(int j = 0; j<board.height;j++){
-                                for(FieldAction action : board.getSpace(i,j).getActions()){
-                                    if(action instanceof StartSpace){
-                                        startfields.add(board.getSpace(i,j));
-                                    }else if(action instanceof Checkpoint){
-                                        board.setCheckpoints(board.getCheckpoints()+1);
+                        for(int j = 0; j<board.height;j++){
+                            for(FieldAction action : board.getSpace(i,j).getActions()){
+                                if(action instanceof StartSpace){
+                                    startfields.add(board.getSpace(i,j));
+                                }else if(action instanceof Checkpoint){
+                                    board.setCheckpoints(board.getCheckpoints()+1);
 
-                                    }else if(action instanceof RebootTokens){
-                                        board.getRebootTokens().add(board.getSpace(i,j));
-                                    }
+                                }else if(action instanceof RebootTokens){
+                                    board.getRebootTokens().add(board.getSpace(i,j));
                                 }
                             }
-                        
+                        }
+
                     }
                     int no = result.get();
                     for (int i = 0; i < no; i++) {
@@ -138,8 +137,8 @@ public class AppController implements Observer {
                         player.setSpace(startfields.get(i%startfields.size()));
 
                     }
-                   
-                    
+
+
                     // XXX: V2
                     // board.setCurrentPlayer(board.getPlayer(0));
                     gameController.startProgrammingPhase();
@@ -289,7 +288,7 @@ public class AppController implements Observer {
 
     /**
      * Get method for the gameController object to see if it's null.
-     * 
+     *
      * @return the GameController object
      */
     public boolean isGameRunning() {

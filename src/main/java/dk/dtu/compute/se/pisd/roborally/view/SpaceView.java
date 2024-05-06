@@ -314,6 +314,7 @@ public class SpaceView extends StackPane implements ViewObserver {
 
     /**
      * Fits the picture to the space on the board.
+     * @Author s230995
      * @param imageView
      */
     private void FitPictureToSpace(ImageView imageView) {

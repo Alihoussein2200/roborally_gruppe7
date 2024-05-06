@@ -67,10 +67,14 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     private final GameController gameController;
 
+
+
     /**
-     * The constructor for the card field view
-     * @param gameController
-     * @param field
+     * Constructs a CardFieldView.
+     * Initializes the view with the provided GameController and CommandCardField.
+     *
+     * @param gameController The GameController instance managing the game.
+     * @param field The CommandCardField to be displayed in the view.
      */
     public CardFieldView(@NotNull GameController gameController, @NotNull CommandCardField field) {
         this.gameController = gameController;
@@ -104,6 +108,9 @@ public class CardFieldView extends GridPane implements ViewObserver {
         field.attach(this);
         update(field);
     }
+
+
+
 
     private String cardFieldRepresentation(CommandCardField cardField) {
         if (cardField.player != null) {
@@ -146,8 +153,10 @@ public class CardFieldView extends GridPane implements ViewObserver {
     }
 
     /**
-     * Updates the view
-     * @param subject
+     * Updates the view based on changes in the provided subject.
+     * If the subject is the observed CommandCardField, updates the displayed card accordingly.
+     *
+     * @param subject The subject that triggered the update.
      */
     @Override
     public void updateView(Subject subject) {

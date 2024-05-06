@@ -5,7 +5,11 @@ import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Represents a space on the game board in the RoboRally game.
+ * Each space can contain a player, walls, and field actions.
+ * Notifies observers when its state changes.
+ */
 public class Space extends Subject {
 
     public final Board board;
@@ -16,10 +20,11 @@ public class Space extends Subject {
     private List<FieldAction> actions = new ArrayList<>();
 
     /**
-     * The constructor for the space
-     * @param board
-     * @param x
-     * @param y
+     * Constructs a Space object with the provided parameters.
+     *
+     * @param board The board this space belongs to.
+     * @param x The x-coordinate of the space.
+     * @param y The y-coordinate of the space.
      */
     public Space(Board board, int x, int y) {
         this.board = board;
@@ -30,13 +35,18 @@ public class Space extends Subject {
         walls = getWalls();
     }
 
+    /**
+     *
+     * @return The player on the space, or null if empty.
+     */
     public Player getPlayer() {
         return player;
     }
 
+
     /**
-     * Sets the player on the space
-     * @param player
+     * Sets the player on the space.
+     * @param player The player to set on the space.
      */
     public void setPlayer(Player player) {
         Player oldPlayer = this.player;
@@ -53,13 +63,19 @@ public class Space extends Subject {
         }
     }
 
-
+    /**
+     * Retrieves the list of wall directions present on the space.
+     * @return The list of wall directions.
+     */
     public List<Heading> getWalls() {
         return walls;
     }
 
 
-
+    /**
+     * Retrieves the list of field actions associated with the space.
+     * @return The list of field actions.
+     */
     public List<FieldAction> getActions() {
         return actions;
     }

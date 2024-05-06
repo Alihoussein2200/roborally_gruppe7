@@ -41,7 +41,7 @@ class Connector {
     private static final int    PORT     = 3306; //<-- update this to your own port
     private static final String DATABASE = "pisd"; //<-- update this to your own database
     private static final String USERNAME = "root"; //<-- update this to your own username
-    private static final String PASSWORD = "Ydx83yar!"; //<-- update this to your own password
+    private static final String PASSWORD = "***"; //<-- update this to your own password
 
     private static final String DELIMITER = ";;";
     

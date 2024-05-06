@@ -34,10 +34,15 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 import java.io.*;
 
 /**
- * ...
+ *
+ *
+ Loads a board with the specified name.
+ *
  *
  * @author Ekkart Kindler, ekki@dtu.dk
+ *  @return The loaded board.
  */
+
 public class LoadBoard {
 
     private static final String BOARDSFOLDER = "boards";
@@ -91,6 +96,15 @@ public class LoadBoard {
         return null;
     }
 
+
+
+    /**
+     * Saves the specified board with the given name.
+     *
+     * @param board The board to save.
+     * @param name The name to save the board with.
+     * NOT NEEDED
+     */
     public static void saveBoard(Board board, String name) {
         BoardTemplate template = new BoardTemplate();
         template.width = board.width;
